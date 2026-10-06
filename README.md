@@ -2,6 +2,8 @@
 
 Ein Plugin für [MuseScore Studio](https://musescore.org) 4.4+, das normale Notation in eine vereinfachte „Stick-Notation“ umwandelt: Notenlinien, Hilfslinien, Schlüssel, Vorzeichen und Versetzungszeichen werden ausgeblendet, und die Tonhöhen werden als Solmisationssilben (do re mi fa so la ti, inkl. Alterationen) unter die Noten geschrieben. Das Playback ändert sich dabei nicht – es werden nur Anzeige-Eigenschaften verändert, keine Tonhöhen.
 
+![Vorher-Nachher-Vergleich: normale Notation wird zu Stick-Notation mit Solmisationssilben](img/vorher-nachher.png)
+
 ## Funktionen
 
 - **Notation vereinfachen** (unabhängig zuschaltbar): blendet Notenlinien, Hilfslinien, Schlüssel, Vorzeichen (Tonart) und Versetzungszeichen (einzelne Akzidenzien) aus.
