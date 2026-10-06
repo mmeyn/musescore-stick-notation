@@ -53,15 +53,6 @@ var MINOR_TONIC_BY_KEYSIG = {
     "7": { letter: "A", acc: 1 }
 };
 
-// Pitch classes 0..11, each with one conventional spelling, for the
-// "fixed to a chosen pitch" do-mode.
-var CHROMATIC_SPELLING = [
-    { letter: "C", acc: 0 },  { letter: "D", acc: -1 }, { letter: "D", acc: 0 },
-    { letter: "E", acc: -1 }, { letter: "E", acc: 0 },  { letter: "F", acc: 0 },
-    { letter: "G", acc: -1 }, { letter: "G", acc: 0 },  { letter: "A", acc: -1 },
-    { letter: "A", acc: 0 },  { letter: "B", acc: -1 }, { letter: "B", acc: 0 }
-];
-
 function mod(n, m) {
     return ((n % m) + m) % m;
 }
@@ -79,16 +70,16 @@ function letterAccPitchClass(letterAcc) {
 }
 
 // doMode: "major" | "minor" | "fixed"
-// fixedPitchClass: pitch class 0..11, only used when doMode === "fixed"
-// (this also covers the "do = c" case, with fixedPitchClass 0)
-function getDoReference(doMode, fixedPitchClass, keySig) {
+// fixedLetterAcc: { letter: "C".."B", acc: -1|0|1 }, only used when
+// doMode === "fixed" (this also covers the "do = c" case)
+function getDoReference(doMode, fixedLetterAcc, keySig) {
     if (doMode === "major") {
         return MAJOR_TONIC_BY_KEYSIG[String(keySig)] || { letter: "C", acc: 0 };
     }
     if (doMode === "minor") {
         return MINOR_TONIC_BY_KEYSIG[String(keySig)] || { letter: "A", acc: 0 };
     }
-    return CHROMATIC_SPELLING[mod(fixedPitchClass, 12)];
+    return fixedLetterAcc;
 }
 
 // Returns { degreeIndex: 0..6, deviation: integer semitones (0 = diatonic,
